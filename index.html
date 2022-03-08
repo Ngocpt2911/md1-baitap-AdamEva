@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    class Apple {
+        constructor(weight = 10) {
+            this.weight = weight;
+        }
+
+        decrease() {
+            return this.weight--;
+        }
+
+        isEmpty() {
+            return this.weight == 0 ? true : false;
+        }
+
+        getWeight() {
+            return console.log(`the weight of apple is ${this.weight}`);
+        }
+    }
+
+    class Human {
+        constructor(name, gender, weight) {
+            this.name = name;
+            this.gender = gender;
+            this.weight = weight;
+        }
+
+        isMale() {
+            return this.gender === 'male' ? true : false;
+        }
+
+        checkApple(apple) {
+            return console.log(!apple.isEmpty() ? 'you can eat this apple': 'apple is finished');
+        }
+
+        eat(apple) {
+            if (!apple.isEmpty()) {
+                console.log(`${this.name} eat apple`);
+                this.weight++;
+                apple.decrease();
+            } else {
+                this.say(`find other apples`);
+            }
+        }
+
+        say(str) {
+            console.log(`${this.name} say ${str}`);
+        }
+    }
+
+    let apple = new Apple();
+    let Human1 = new Human('Adam', 'male', 70);
+    let Human2 = new Human('Eva', 'female', 50);
+
+    Human2.checkApple(apple);
+
+    Human2.say(`do you want to eat ${Human1.name}?`);
+    Human1.say(`ok`);
+
+    for (let i = apple.weight/2; i > 0; i--){
+        Human2.eat(apple);
+        console.log(`After eat apple, the weight of Eva is`, Human2.weight);
+        Human1.eat(apple);
+        console.log(`After eat apple, the weight of Adam is`, Human1.weight);
+
+    }
+    Human1.checkApple(apple);
+
+</script>
